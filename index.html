@@ -97,7 +97,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Lottie Container */
         #lottie-globe {
             width: 100%;
             max-width: 450px;
@@ -142,7 +141,7 @@
         }
         .btn-store-text span { font-size: 1rem; font-weight: 800; }
 
-        /* Restored Features Grid */
+        /* Features Grid */
         .features-section {
             padding: 4rem 0;
             position: relative;
@@ -150,7 +149,7 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.85); /* Frosted Glass */
+            background: rgba(255, 255, 255, 0.85); 
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 24px;
@@ -193,7 +192,7 @@
             font-weight: 600;
         }
 
-        /* Worlds Banner */
+        /* App-Style Worlds Section */
         .worlds-section {
             padding: 4rem 0 6rem;
             position: relative;
@@ -203,8 +202,8 @@
         .info-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
-            border-radius: 24px;
-            padding: 3rem 2rem;
+            border-radius: 28px;
+            padding: 3rem 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             text-align: center;
@@ -212,25 +211,80 @@
 
         .world-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 2rem 1rem;
+            margin-top: 3rem;
+            justify-items: center;
         }
 
+        /* Matching Flutter App UI exactly */
         .world-item {
-            background: #FFFFFF;
-            border: 1px solid rgba(229, 231, 235, 0.5);
-            border-radius: 16px;
-            padding: 1.5rem;
-            font-weight: 800;
-            color: var(--sip-navy);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .world-item i {
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        .world-card {
+            width: 125px;
+            height: 125px;
+            border-radius: 24px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .world-card.unlocked {
+            background: linear-gradient(135deg, #E3F2FD, #90CAF9);
+            border: 1.5px solid rgba(0, 122, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.12);
+            color: #007AFF;
+        }
+
+        .world-card.locked {
+            background: rgba(241, 245, 249, 0.4); /* Faint translucent background */
+            border: 1.5px dashed #CBD5E1; /* Dashed border to look "empty" */
+        }
+
+        .status-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+
+        .world-card.unlocked .status-badge { background: #007AFF; }
+        
+        /* Note: .pro-badge and locked .status-badge removed entirely */
+
+        .world-title {
+            font-size: 13px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        
+        .title-unlocked { color: #0F172A; }
+        .title-locked { color: #94A3B8; }
+
+        .world-subtitle {
+            font-size: 11px;
+            font-weight: 600;
+            color: #94A3B8;
+            line-height: 1.2;
+            text-align: center;
         }
 
         /* Footer */
@@ -256,7 +310,6 @@
 
         @media (max-width: 991px) {
             .hero-title { font-size: 2.8rem; }
-            .world-grid { grid-template-columns: repeat(2, 1fr); }
             #lottie-globe { margin-top: 3rem; }
         }
     </style>
@@ -267,11 +320,9 @@
     <nav class="navbar-sip">
         <div class="container px-4 d-flex justify-content-between align-items-center">
             <a href="index.html" class="brand-logo">
-                <!-- Using your custom logo -->
                 <img src="images/logoimage.png" alt="SipWorld Icon">
                 <span>SipWorld</span>
             </a>
-            <!-- Links removed from header for cleaner look -->
         </div>
     </nav>
 
@@ -286,24 +337,14 @@
                     </p>
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-4">
-                        <a href="#" class="btn-store">
-                            <i class="bi bi-apple"></i>
-                            <div class="btn-store-text">
-                                <small>Download on the</small>
-                                <span>App Store</span>
-                            </div>
+                        <a href="#" style="transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1276560000" alt="Download on the App Store" style="height: 54px;">
                         </a>
-                        <a href="#" class="btn-store">
-                            <i class="bi bi-google-play"></i>
-                            <div class="btn-store-text">
-                                <small>GET IT ON</small>
-                                <span>Google Play</span>
-                            </div>
+                        <a href="#" style="transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="height: 54px;">
                         </a>
                     </div>
                 </div>
-
-                <!-- Lottie Globe Animation -->
                 <div class="col-lg-6">
                     <div id="lottie-globe"></div>
                 </div>
@@ -311,7 +352,7 @@
         </div>
     </section>
 
-    <!-- Restored 6-Feature Grid -->
+    <!-- Features Grid -->
     <section class="features-section">
         <div class="container px-4">
             <div class="row g-4">
@@ -361,25 +402,80 @@
         </div>
     </section>
 
-    <!-- Worlds Section -->
+    <!-- App-Style Worlds Section -->
     <section class="worlds-section">
         <div class="container px-4">
             <div class="info-card">
-                <h2 class="fw-bold mb-3" style="font-size: 2.2rem; font-weight: 900;">Unlock Theme Worlds</h2>
-                <p class="text-muted fs-5 m-0">Maintain your 7-day streak to progress across vibrant environments.</p>
+                <h2 class="fw-bold mb-2" style="font-size: 2.2rem; font-weight: 900;">Unlock Theme Worlds</h2>
+                <p class="text-muted fs-5 m-0" style="font-weight: 600;">Maintain your 7-day streak to discover new environments.</p>
                 
                 <div class="world-grid">
-                    <!-- Base Worlds -->
-                    <div class="world-item"><i class="bi bi-droplet-fill" style="color: var(--sip-primary);"></i>Ocean Realm</div>
-                    <div class="world-item"><i class="bi bi-tree-fill" style="color: #4CAF50;"></i>Forest Canopy</div>
-                    <div class="world-item"><i class="bi bi-brightness-high-fill" style="color: #FF9800;"></i>Sun Canyon</div>
-                    <div class="world-item"><i class="bi bi-rocket-takeoff-fill" style="color: #1A237E;"></i>Deep Galaxy</div>
+                    <!-- Unlocked App State -->
+                    <div class="world-item">
+                        <div class="world-card unlocked">
+                            <i class="bi bi-droplet-fill"></i>
+                            <div class="status-badge"><i class="bi bi-check"></i></div>
+                        </div>
+                        <div class="world-title title-unlocked">Ocean Realm</div>
+                        <div class="world-subtitle">Active Realm</div>
+                    </div>
                     
-                    <!-- Expanded Worlds -->
-                    <div class="world-item"><i class="bi bi-snow" style="color: #4FC3F7;"></i>Frozen Tundra</div>
-                    <div class="world-item"><i class="bi bi-fire" style="color: #E65100;"></i>Volcanic Ridge</div>
-                    <div class="world-item"><i class="bi bi-mountain" style="color: #795548;"></i>Mountain Peaks</div>
-                    <div class="world-item"><i class="bi bi-gem" style="color: #7B1FA2;"></i>Crystal Caverns</div>
+                    <!-- Faint Mystery Realms -->
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-tree-fill" style="color: #4CAF50; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 7 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-brightness-high-fill" style="color: #FF9800; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 14 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-rocket-takeoff-fill" style="color: #1A237E; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 21 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-snow" style="color: #4FC3F7; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 28 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-fire" style="color: #E65100; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 35 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-triangle-fill" style="color: #795548; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 42 days</div>
+                    </div>
+
+                    <div class="world-item">
+                        <div class="world-card locked">
+                            <i class="bi bi-gem" style="color: #7B1FA2; opacity: 0.2;"></i>
+                        </div>
+                        <div class="world-title title-locked">Mystery Realm</div>
+                        <div class="world-subtitle">Unlocks at 49 days</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -397,10 +493,9 @@
         </div>
     </footer>
 
-    <!-- Scripts for Scroll Fill and Lottie -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Load the Lottie Globe animation
         lottie.loadAnimation({
             container: document.getElementById('lottie-globe'),
             renderer: 'svg',
