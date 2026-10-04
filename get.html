@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>You're Invited to a SipWorld Squad!</h1>
+  <p>Your Join Code is: <strong id="invite-code">Loading...</strong></p>
+  
+  <a href="https://play.google.com/store/apps/details?id=com.pocketenginestudio.hydrobuddy">Get on Android</a>
+<a href="https://apps.apple.com/app/id8JU7BQ4KDZ">Get on iOS</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    // Accept both groupId (new) and code (legacy) so old share links still work.
+    const groupId = params.get('groupId') || params.get('code');
+    document.getElementById('invite-code').innerText = groupId ? groupId : "No code found";
+
+    // Fallback: attempt to open the app if installed. The app accepts
+    // either param name, but we always emit groupId going forward.
+    if (groupId) {
+       setTimeout(() => {
+         window.location.href = `sipworld://squad?groupId=${groupId}`;
+       }, 500);
+    }
+  </script>
+</body>
+</html>

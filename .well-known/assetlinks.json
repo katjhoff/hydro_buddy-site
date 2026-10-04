@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.pocketenginestudio.hydrobuddy",
+    "sha256_cert_fingerprints": ["AF:0B:FC:FF:61:AE:7B:26:BC:FD:35:5D:96:61:5A:11:54:9A:ED:05:62:F4:E9:2E:63:A3:94:1A:DE:0C:00:08"]
+  }
+}]
