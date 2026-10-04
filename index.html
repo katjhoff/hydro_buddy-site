@@ -369,10 +369,17 @@
                 <p class="text-muted fs-5 m-0">Maintain your 7-day streak to progress across vibrant environments.</p>
                 
                 <div class="world-grid">
-                    <div class="world-item"><i class="bi bi-flower1 text-success"></i>Garden</div>
-                    <div class="world-item"><i class="bi bi-sun-fill text-warning"></i>Desert</div>
-                    <div class="world-item"><i class="bi bi-tsunami text-primary"></i>Ocean</div>
-                    <div class="world-item"><i class="bi bi-tree-fill" style="color: #059669;"></i>Forest</div>
+                    <!-- Base Worlds -->
+                    <div class="world-item"><i class="bi bi-droplet-fill" style="color: var(--sip-primary);"></i>Ocean Realm</div>
+                    <div class="world-item"><i class="bi bi-tree-fill" style="color: #4CAF50;"></i>Forest Canopy</div>
+                    <div class="world-item"><i class="bi bi-brightness-high-fill" style="color: #FF9800;"></i>Sun Canyon</div>
+                    <div class="world-item"><i class="bi bi-rocket-takeoff-fill" style="color: #1A237E;"></i>Deep Galaxy</div>
+                    
+                    <!-- Expanded Worlds -->
+                    <div class="world-item"><i class="bi bi-snow" style="color: #4FC3F7;"></i>Frozen Tundra</div>
+                    <div class="world-item"><i class="bi bi-fire" style="color: #E65100;"></i>Volcanic Ridge</div>
+                    <div class="world-item"><i class="bi bi-mountain" style="color: #795548;"></i>Mountain Peaks</div>
+                    <div class="world-item"><i class="bi bi-gem" style="color: #7B1FA2;"></i>Crystal Caverns</div>
                 </div>
             </div>
         </div>
@@ -399,7 +406,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'images/load_animation.json' // Path to your local json animation
+            path: 'images/world_animation.json' // Path to your local json animation
         });
     </script>
 </body>
