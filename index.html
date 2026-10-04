@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <meta name="description" content="SipWorld – Gamified Water Drinking & Hydration Reminder. App compliance and legal documentation." />
+    <title>SipWorld – App & Legal Documentation</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Lottie Web Player -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+    <style>
+        :root {
+            --sip-primary: #007AFF;
+            --sip-teal: #00C7BE;
+            --sip-flame: #FF6B35;
+            --sip-navy: #111827;
+            --sip-text-sub: #4B5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F9FAFB;
+            color: var(--sip-navy);
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* Water Rising Background Effect */
+        #water-background {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(180deg, rgba(0, 199, 190, 0.15) 0%, rgba(0, 122, 255, 0.25) 100%);
+            z-index: -1;
+            transition: height 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Navigation */
+        .navbar-sip {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--sip-navy);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 0 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--sip-primary), var(--sip-teal));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--sip-text-sub);
+            max-width: 500px;
+            line-height: 1.6;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* Lottie Container */
+        #lottie-globe {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            filter: drop-shadow(0 20px 30px rgba(0, 122, 255, 0.15));
+        }
+
+        /* Store Badges */
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--sip-navy);
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-store:hover {
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-store i { font-size: 1.6rem; }
+        
+        .btn-store-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.1;
+        }
+
+        .btn-store-text small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .btn-store-text span { font-size: 1rem; font-weight: 800; }
+
+        /* Restored Features Grid */
+        .features-section {
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.85); /* Frosted Glass */
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .icon-blue { background: rgba(0, 122, 255, 0.1); color: var(--sip-primary); }
+        .icon-teal { background: rgba(0, 199, 190, 0.12); color: #009690; }
+        .icon-orange { background: rgba(255, 107, 53, 0.1); color: var(--sip-flame); }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--sip-text-sub);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* Worlds Banner */
+        .worlds-section {
+            padding: 4rem 0 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        .world-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .world-item {
+            background: #FFFFFF;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-weight: 800;
+            color: var(--sip-navy);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .world-item i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #FFFFFF;
+            border-top: 1px solid rgba(229, 231, 235, 0.5);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links { margin-bottom: 1.5rem; }
+        .footer-links a {
+            color: var(--sip-navy);
+            text-decoration: none;
+            font-weight: 700;
+            margin: 0 15px;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover { color: var(--sip-primary); }
+
+        @media (max-width: 991px) {
+            .hero-title { font-size: 2.8rem; }
+            .world-grid { grid-template-columns: repeat(2, 1fr); }
+            #lottie-globe { margin-top: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Water Fill Background -->
+    <div id="water-background"></div>
+
+    <!-- Minimal Navigation -->
+    <nav class="navbar-sip">
+        <div class="container px-4 d-flex justify-content-between align-items-center">
+            <a href="index.html" class="brand-logo">
+                <!-- Using your custom logo -->
+                <img src="images/logoimage.png" alt="SipWorld Icon">
+                <span>SipWorld</span>
+            </a>
+            <!-- Links removed from header for cleaner look -->
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container px-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="hero-title">Turn drinking <span>water</span> into a fun game.</h1>
+                    <p class="hero-subtitle">
+                        Time-boxed checkpoint targets, XP rewards, world exploration, and co-op squad accountability. Built to keep you hydrated effortlessly.
+                    </p>
+
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-4">
+                        <a href="#" class="btn-store">
+                            <i class="bi bi-apple"></i>
+                            <div class="btn-store-text">
+                                <small>Download on the</small>
+                                <span>App Store</span>
+                            </div>
+                        </a>
+                        <a href="#" class="btn-store">
+                            <i class="bi bi-google-play"></i>
+                            <div class="btn-store-text">
+                                <small>GET IT ON</small>
+                                <span>Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Lottie Globe Animation -->
+                <div class="col-lg-6">
+                    <div id="lottie-globe"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restored 6-Feature Grid -->
+    <section class="features-section">
+        <div class="container px-4">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-blue"><i class="bi bi-hourglass-split"></i></div>
+                        <h3>Checkpoint Goals</h3>
+                        <p>Divide your day into time-boxed targets. Hit your ±5 minute "Golden Windows" to earn maximum XP bonuses.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-teal"><i class="bi bi-people-fill"></i></div>
+                        <h3>Co-op Squads & Splashes</h3>
+                        <p>Form private squads with friends or partners. Track combined progress and send instant water balloon splashes when someone falls behind.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-orange"><i class="bi bi-shield-check"></i></div>
+                        <h3>Dual Streak Protection</h3>
+                        <p>Sip Streak tracks consecutive active days so an imperfect day doesn't wipe out your long-term momentum.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-blue"><i class="bi bi-cloud-sun-fill"></i></div>
+                        <h3>Weather-Aware Targets</h3>
+                        <p>Automatic heatwave adjustments give your body the extra intake calculation it needs on high-temperature days.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-teal"><i class="bi bi-soundwave"></i></div>
+                        <h3>ASMR Water Logging</h3>
+                        <p>Satisfying tactile press-to-fill haptics and water pour sounds make every sip feel like a mini reward.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-orange"><i class="bi bi-smartwatch"></i></div>
+                        <h3>Apple Watch & Wear OS</h3>
+                        <p>Log water directly from your wrist with automatic Apple Health & Google Health Connect synchronization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Worlds Section -->
+    <section class="worlds-section">
+        <div class="container px-4">
+            <div class="info-card">
+                <h2 class="fw-bold mb-3" style="font-size: 2.2rem; font-weight: 900;">Unlock Theme Worlds</h2>
+                <p class="text-muted fs-5 m-0">Maintain your 7-day streak to progress across vibrant environments.</p>
+                
+                <div class="world-grid">
+                    <div class="world-item"><i class="bi bi-flower1 text-success"></i>Garden</div>
+                    <div class="world-item"><i class="bi bi-sun-fill text-warning"></i>Desert</div>
+                    <div class="world-item"><i class="bi bi-tsunami text-primary"></i>Ocean</div>
+                    <div class="world-item"><i class="bi bi-tree-fill" style="color: #059669;"></i>Forest</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container px-4">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="mailto:develop@pocketenginestudio.com">Contact Support</a>
+            </div>
+            <p class="text-muted small m-0">&copy; 2026 Pocket Engine Studio, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Scroll Fill and Lottie -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load the Lottie Globe animation
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-globe'), // ID of the container
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'images/load_animation.json' // Path to your local json animation
+        });
+
+        // Water Rising Scroll Effect
+        window.addEventListener('scroll', () => {
+            const waterBg = document.getElementById('water-background');
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            
+            // Calculate percentage scrolled (0 to 1)
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            
+            // Map scroll percentage to a height percentage (max 80% to not overwhelm the header)
+            const fillHeight = Math.min(scrollPercent * 90, 90); 
+            
+            waterBg.style.height = `${fillHeight}%`;
+        });
+    </script>
+</body>
+</html>
