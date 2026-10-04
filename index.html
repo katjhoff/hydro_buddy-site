@@ -38,19 +38,6 @@
             position: relative;
         }
 
-        /* Water Rising Background Effect */
-        #water-background {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0%;
-            background: linear-gradient(180deg, rgba(0, 199, 190, 0.15) 0%, rgba(0, 122, 255, 0.25) 100%);
-            z-index: -1;
-            transition: height 0.1s ease-out;
-            pointer-events: none;
-        }
-
         /* Glassmorphism Navigation */
         .navbar-sip {
             background: rgba(255, 255, 255, 0.85);
@@ -276,9 +263,6 @@
 </head>
 <body>
 
-    <!-- Dynamic Water Fill Background -->
-    <div id="water-background"></div>
-
     <!-- Minimal Navigation -->
     <nav class="navbar-sip">
         <div class="container px-4 d-flex justify-content-between align-items-center">
@@ -416,22 +400,6 @@
             loop: true,
             autoplay: true,
             path: 'images/load_animation.json' // Path to your local json animation
-        });
-
-        // Water Rising Scroll Effect
-        window.addEventListener('scroll', () => {
-            const waterBg = document.getElementById('water-background');
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.offsetHeight;
-            const winHeight = window.innerHeight;
-            
-            // Calculate percentage scrolled (0 to 1)
-            const scrollPercent = scrollTop / (docHeight - winHeight);
-            
-            // Map scroll percentage to a height percentage (max 80% to not overwhelm the header)
-            const fillHeight = Math.min(scrollPercent * 90, 90); 
-            
-            waterBg.style.height = `${fillHeight}%`;
         });
     </script>
 </body>
