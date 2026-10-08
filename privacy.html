@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <style>
-        .brand-color { color: #007BFF; /* Updated to a default blue, adjust as needed for SipWorld */ }
+        .brand-color { color: #007BFF; }
         h1, .fw-bolder { color: #007BFF; }
     </style>
 </head>
@@ -26,61 +26,69 @@
             <div class="container px-5">
                 <h1 class="fw-bolder mb-4">Privacy Policy</h1>
                 <div class="bg-light rounded-3 p-4">
-                    <p><strong>Last updated: October 2026</strong></p>
-                    <p>Pocket Engine Studio, LLC ("we," "our," or "us") respects your privacy. This Privacy Policy details how we collect, use, and protect your information within the SipWorld application. Because we do not release the app in the EU, UK, Switzerland, Brazil, or Thailand, international frameworks such as GDPR, UK GDPR, Swiss FADP, LGPD, or PDPA do not apply.</p>
+                    <p><strong>Last updated: 8, October 2026</strong></p>
+                    <p>Pocket Engine Studio, LLC ("we," "our," or "us") respects your privacy. This Privacy Policy details how we collect, use, and protect your information within the SipWorld application. SipWorld is operated from the United States and data is processed in the United States. SipWorld is not offered in, and is not intended for use in, the European Union (EU), United Kingdom (UK), Switzerland, Brazil, or Thailand.</p>
                     
-                    <h5 class="brand-color mt-4">1. Information We Collect</h5>
+                    <h5 class="brand-color mt-4">1. Information We Collect & How We Use It</h5>
                     <ul>
-                        <li><strong>Anonymous Identifiers:</strong> When you first launch SipWorld, we silently create an anonymous account identified by a random User ID. No personal information is collected at this stage.</li>
-                        <li><strong>Location Data:</strong> We collect location data (with your explicit user consent) strictly to power the local weather feature.</li>
-                        <li><strong>Notification Preferences:</strong> We request permission to send push notifications, which covers checkpoint reminders, weather alerts, and squad nudges.</li>
+                        <li><strong>Account & Identity:</strong> We silently create an anonymous account (Firebase UID) on launch. If you choose to link Google or Apple Sign-In, we collect the associated email address and name to secure your account.</li>
+                        <li><strong>App Hydration Data:</strong> Your hydration history logged directly in SipWorld (daily goal, ml logged, volume/sip streaks, XP, selected world, and reminder times) is saved to our secure cloud database (Firestore) so your streaks and Squad progress function correctly.</li>
+                        <li><strong>Location Data:</strong> With your consent, we collect approximate and precise location coordinates. These are processed ephemerally on our servers and sent to OpenWeatherMap to calculate your weather-adjusted hydration goal. We do not store your location history.</li>
+                        <li><strong>Weight & Activity Level:</strong> If entered during onboarding to calculate your goal, this data is stored strictly on your device and is never uploaded to our servers.</li>
+                        <li><strong>Camera & Photos ("Today's Snap"):</strong> The camera is only used when you explicitly tap it. Photos taken for "Today's Snap" are stored locally on your device, are never uploaded to our servers, and are deleted if you uninstall the app.</li>
+                        <li><strong>Device & Analytics Data:</strong> We collect push notification tokens (FCM), IP addresses, crash logs, and diagnostic data via Firebase Crashlytics to monitor app health and deliver features (like Squad Nudges).</li>
+                        <li><strong>Advertising IDs:</strong> AdMob collects standard advertising identifiers (IDFA/AAID) to serve rewarded ads to free users.</li>
+                        <li><strong>Purchase Data:</strong> We collect your purchase history and subscription status to unlock Pro features.</li>
                     </ul>
                     
                     <h5 class="brand-color mt-4">2. Apple HealthKit & Android Health Connect</h5>
+                    <p><strong>Limited Use Disclosure:</strong> Information received from Apple HealthKit and Android Health Connect is used strictly to provide the app's core hydration tracking features. It is read and written on-device only.</p>
                     <ul>
-                        <li>If you grant permission, SipWorld reads and writes water intake data to Apple HealthKit or Android Health Connect.</li>
-                        <li>This data is stored on-device only, is never transmitted to our servers, and is never shared with third parties or used for advertising.</li>
+                        <li>Raw data pulled from Health platforms is never transmitted to our servers, never sold, and never used for advertising.</li>
+                        <li>It is not transferred to third parties except as strictly needed to provide the feature.</li>
                         <li>You can revoke access at any time in your device's Health settings.</li>
                     </ul>
                     
-                    <h5 class="brand-color mt-4">3. Squad Data & Public Visibility</h5>
-                    <p>If you join a Squad, specific data points are shared to facilitate group motivation.</p>
+                    <h5 class="brand-color mt-4">3. Squad Data, Nudges & Public Visibility</h5>
+                    <p>If you join a Squad, specific data points are shared to facilitate group motivation. </p>
                     <ul>
-                        <li><strong>What they see:</strong> Squad members see your display name, your world theme, your sip streak count, your daily progress ring, and a total squad contribution.</li>
-                        <li><strong>What they NEVER see:</strong> They never see your XP, your volume streak, your daily goal, or your photos.</li>
-                        <li><strong>What we DO NOT collect:</strong> We do not collect custom avatars, freeform messages, or user-uploaded photos.</li>
+                        <li><strong>What Squad members see:</strong> Your auto-generated explorer display name, world theme, sip streak, daily progress ring, your daily goal, and the total ml logged today.</li>
+                        <li><strong>What they NEVER see:</strong> Your XP, volume streak, photos, or raw Health app data.</li>
+                        <li><strong>Nudges:</strong> When sending a nudge, our server briefly processes sender/recipient IDs to deliver the push notification, retains a daily count to prevent spam, and then deletes the ephemeral nudge record.</li>
                     </ul>
                     
-                    <h5 class="brand-color mt-4">4. Third-Party Processors</h5>
-                    <p>We utilize industry-standard third-party services to operate the App:</p>
+                    <h5 class="brand-color mt-4">4. Third-Party Processors & Wearables</h5>
+                    <p>We utilize industry-standard services to operate the App, all of which use encryption in transit:</p>
                     <ul>
-                        <li><strong>Firebase/Firestore (Google):</strong> Used for database infrastructure, cloud storage, and secure user authentication.</li>
-                        <li><strong>Firebase Cloud Messaging (Google):</strong> Used for push notification delivery, including squad nudges. When you send a nudge, your display name and the notification payload transit through Google's FCM servers.</li>
-                        <li><strong>RevenueCat:</strong> Used to securely process and manage subscriptions and in-app purchases.</li>
-                    </ul>
-                    
-                    <h5 class="brand-color mt-4">5. Advertising & Analytics</h5>
-                    <p>We use AdMob to serve advertisements within SipWorld.</p>
-                    <ul>
-                        <li><strong>iOS App Tracking Transparency (ATT):</strong> On iOS, if you decline ATT, AdMob serves non-personalized ads.</li>
-                        <li><strong>Android Controls:</strong> On Android, you can limit ad personalization via your device settings.</li>
-                        <li><strong>Analytics Restriction:</strong> No ad data is used for our own internal analytics.</li>
+                        <li><strong>Google (Firebase/Firestore/Crashlytics/FCM):</strong> For database, auth, crash reporting, and push notifications.</li>
+                        <li><strong>Apple & Google (Sign-in & Payments):</strong> For optional OAuth sign-in and secure payment processing.</li>
+                        <li><strong>RevenueCat:</strong> Manages subscription entitlements (receives Firebase UID, purchase history, and IP address).</li>
+                        <li><strong>OpenWeatherMap:</strong> Ephemerally processes location coordinates to return weather data.</li>
+                        <li><strong>AdMob (Google):</strong> Serves ads and provides consent management (UMP).</li>
+                        <li><strong>Wearables & Widgets:</strong> Apple Watch, Wear OS, and home-screen widgets communicate with SipWorld via Apple and Google's secure on-device channels.</li>
                     </ul>
 
-                    <h5 class="brand-color mt-4">6. Data Retention & Deletion</h5>
+                    <h5 class="brand-color mt-4">5. Data Retention & How to Delete Your Account</h5>
+                    <p>Anonymous accounts persist until deleted. You can request deletion of your account and all associated data at any time.</p>
                     <ul>
-                        <li>Cloud data is retained while your account is active.</li>
-                        <li>On account deletion, all cloud data is removed immediately.</li>
-                        <li>Anonymous accounts that are never upgraded remain in our auth system until purged by our scheduled cleanup.</li>
-                        <li><strong>How to delete your account:</strong> You can delete your account and all associated data directly within the app by navigating to <strong>Settings > Delete Account</strong>. If you have uninstalled the app or prefer to request deletion via the web, please contact us and we will manually delete your account and all associated data.</li>
+                        <li><strong>In-App Deletion:</strong> Navigate to <strong>Settings > Delete Account</strong> within the SipWorld app.</li>
+                        <li><strong>Web/Email Deletion:</strong> If you have uninstalled the app, email <a href="mailto:develop@pocketenginestudio.com">develop@pocketenginestudio.com</a> with your User ID to request manual deletion within 30 days.</li>
                     </ul>
+                    <p><em>Exceptions:</em> Upon deletion, your cloud data is wiped. However, a minimal "tombstone" record (UID and timestamp) is retained to prevent purchase fraud. RevenueCat purchase records, Google/Apple transaction receipts, and anonymized Crashlytics logs are retained per the respective processors' retention policies. Water entries previously written to Apple Health/Health Connect remain in your device's health ecosystem.</p>
                     
-                    <h5 class="brand-color mt-4">7. California Privacy Rights (CCPA)</h5>
-                    <p>For residents of California, you have the right to request access to the specific pieces of personal information we have collected about you, request the deletion of your data, and opt-out of the "sale" of personal information. Because we use AdMob, certain advertising identifiers may be shared to serve ads. You may opt out of personalized tracking via your device settings (ATT on iOS or Ad Personalization on Android).</p>
+                    <h5 class="brand-color mt-4">6. US State Privacy Rights (CCPA & Others)</h5>
+                    <p>For residents of California and other applicable US states: We collect identifiers, precise geolocation (sensitive personal info), health-adjacent hydration data (sensitive personal info), and commercial purchase information to provide our service. We do not use sensitive information beyond providing the core service. AdMob may share identifiers to serve personalized ads. You may opt out of personalized tracking via your device settings (ATT on iOS or Ad Personalization on Android) or the in-app "Your Privacy Choices" menu. You have the right to know, correct, and delete your data, and we will not discriminate against you for exercising these rights.</p>
+
+                    <h5 class="brand-color mt-4">7. Children's Privacy</h5>
+                    <p>SipWorld is not directed to children under the age of 13. We do not knowingly collect personal data from children under 13. If we become aware we have collected such data, we will delete it.</p>
                     
-                    <h5 class="brand-color mt-4">8. Contact Us</h5>
-                    <p>If you have any questions about this Privacy Policy, you may contact us at:<br>
-                    <a href="mailto:develop@pocketenginestudio.com">develop@pocketenginestudio.com</a></p>
+                    <h5 class="brand-color mt-4">8. Changes to this Policy & Contact Us</h5>
+                    <p>We may update this policy periodically. We will notify you of significant changes via in-app notices or push notifications.</p>
+                    <p>If you have questions, please contact us at:<br>
+                    <strong>Pocket Engine Studio LLC</strong><br>
+                    <br>
+                    Email: <a href="mailto:develop@pocketenginestudio.com">develop@pocketenginestudio.com</a><br>
+                    <em>We aim to respond to all data requests within 45 days.</em></p>
                 </div>
             </div>
         </section>
